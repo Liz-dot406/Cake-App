@@ -1,8 +1,12 @@
 
 import cakeImage from "../assets/images/ck1.jpg"; 
-
+import { useSelector } from "react-redux"
+import type { RootState } from "../app/store"
 
 export const Hero = () => {
+   const user = useSelector((state: RootState) => state.user.user)
+    const name = user?.name
+    
   return (
     <>
    
@@ -12,6 +16,11 @@ export const Hero = () => {
         <h1 className="text-5xl font-bold text-pink-700">
           Welcome to <span className="text-yellow-600">CakeApp</span>
         </h1>
+         {
+                            name ? (
+                                <span>Welcome {name} </span>
+                            ) : <span> Welcome !</span>
+                        }
         <p className="text-lg text-gray-700 leading-relaxed">
           Discover, order, and enjoy your favorite cakes with just a few clicks.
           From birthdays to weddings — CakeApp makes every celebration sweeter!
